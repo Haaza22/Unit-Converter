@@ -1,0 +1,154 @@
+﻿@model Unit_Converter.Models.ConverterModel
+
+<h2>Unit Converter</h2>
+
+<form asp-action="Convert" method="post">
+    <!-- Length Conversion Form -->
+    <div>
+        <input type="radio" name="ConversionType" value="Length" checked="@(Model.ConversionType == "Length")" />
+        <label for="length_conversion">Length Conversion</label>
+        <div>
+            <label for="input_val">Value to Convert:</label>
+            <input type="number" step="any" name="input_val" id="input_val" value="@Model.input_val" />
+        </div>
+
+        <div>
+            <label for="input_unit">From:</label>
+            <select name="input_unit" id="input_unit">
+                <option value="meter" selected="@(Model.input_unit == "meter")">Meter</option>
+                <option value="kilometer" selected="@(Model.input_unit == "kilometer")">Kilometer</option>
+                <option value="centimeter" selected="@(Model.input_unit == "centimeter")">Centimeter</option>
+                <option value="millimeter" selected="@(Model.input_unit == "millimeter")">Millimeter</option>
+                <option value="inch" selected="@(Model.input_unit == "inch")">Inch</option>
+                <option value="foot" selected="@(Model.input_unit == "foot")">Foot</option>
+                <option value="mile" selected="@(Model.input_unit == "mile")">Mile</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="output_unit">To:</label>
+            <select name="output_unit" id="output_unit">
+                <option value="meter" selected="@(Model.output_unit == "meter")">Meter</option>
+                <option value="kilometer" selected="@(Model.output_unit == "kilometer")">Kilometer</option>
+                <option value="centimeter" selected="@(Model.output_unit == "centimeter")">Centimeter</option>
+                <option value="millimeter" selected="@(Model.output_unit == "millimeter")">Millimeter</option>
+                <option value="inch" selected="@(Model.output_unit == "inch")">Inch</option>
+                <option value="foot" selected="@(Model.output_unit == "foot")">Foot</option>
+                <option value="mile" selected="@(Model.output_unit == "mile")">Mile</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Temperature Conversion Form -->
+    <div>
+        <input type="radio" name="ConversionType" value="Temperature" checked="@(Model.ConversionType == "Temperature")" />
+        <label for="temp_conversion">Temperature Conversion</label>
+        <div>
+            <label for="temp_input_val">Value to Convert:</label>
+            <input type="number" step="any" name="temp_input_val" id="temp_input_val" value="@Model.temp_input_val" />
+        </div>
+
+        <div>
+            <label for="temp_input_unit">From:</label>
+            <select name="temp_input_unit" id="temp_input_unit">
+                <option value="C" selected="@(Model.temp_input_unit == "C")">Celsius</option>
+                <option value="K" selected="@(Model.temp_input_unit == "K")">Kelvin</option>
+                <option value="F" selected="@(Model.temp_input_unit == "F")">Fahrenheit</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="temp_output_unit">To:</label>
+            <select name="temp_output_unit" id="temp_output_unit">
+                <option value="C" selected="@(Model.temp_output_unit == "C")">Celsius</option>
+                <option value="K" selected="@(Model.temp_output_unit == "K")">Kelvin</option>
+                <option value="F" selected="@(Model.temp_output_unit == "F")">Fahrenheit</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Number Base Conversion Form -->
+    <div>
+        <input type="radio" name="ConversionType" value="NumberBase" checked="@(Model.ConversionType == "NumberBase")" />
+        <label for="number_base_conversion">Number Base Conversion</label>
+        <div>
+            <label for="number_input_val">Value to Convert:</label>
+            <input type="text" name="number_input_val" id="number_input_val" value="@Model.number_input_val" />
+        </div>
+
+        <div>
+            <label for="number_input_base">From Base:</label>
+            <select name="number_input_base" id="number_input_base">
+                <option value="binary" selected="@(Model.number_input_base == "binary")">Binary</option>
+                <option value="octal" selected="@(Model.number_input_base == "octal")">Octal</option>
+                <option value="decimal" selected="@(Model.number_input_base == "decimal")">Decimal</option>
+                <option value="hexadecimal" selected="@(Model.number_input_base == "hexadecimal")">Hexadecimal</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="number_output_base">To Base:</label>
+            <select name="number_output_base" id="number_output_base">
+                <option value="binary" selected="@(Model.number_output_base == "binary")">Binary</option>
+                <option value="octal" selected="@(Model.number_output_base == "octal")">Octal</option>
+                <option value="decimal" selected="@(Model.number_output_base == "decimal")">Decimal</option>
+                <option value="hexadecimal" selected="@(Model.number_output_base == "hexadecimal")">Hexadecimal</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Degrees to Radians Conversion Form -->
+    <div>
+        <input type="radio" name="ConversionType" value="DegreesToRadians" checked="@(Model.ConversionType == "DegreesToRadians")" />
+        <label for="degrees_to_radians_conversion">Degrees to Radians</label>
+        <div>
+            <label for="degrees_input_val">Degrees:</label>
+            <input type="number" step="any" name="degrees_input_val" id="degrees_input_val" value="@Model.degrees_input_val" />
+        </div>
+    </div>
+
+    <!-- Radians to Degrees Conversion Form -->
+    <div>
+        <input type="radio" name="ConversionType" value="RadiansToDegrees" checked="@(Model.ConversionType == "RadiansToDegrees")" />
+        <label for="radians_to_degrees_conversion">Radians to Degrees</label>
+        <div>
+            <label for="radians_input_val">Radians:</label>
+            <input type="number" step="any" name="radians_input_val" id="radians_input_val" value="@Model.radians_input_val" />
+        </div>
+    </div>
+
+    <button type="submit">Convert</button>
+</form>
+
+@if (Model != null)
+{
+    <!-- Display length conversion result -->
+    @if (Model.ConversionType == "Length")
+    {
+        <h3>Length Conversion Result: @Model.input_val @Model.input_unit = @Model.output_val @Model.output_unit</h3>
+    }
+
+    <!-- Display temperature conversion result -->
+    @if (Model.ConversionType == "Temperature")
+    {
+        <h3>Temperature Conversion Result: @Model.temp_input_val @Model.temp_input_unit = @Model.temp_output_val @Model.temp_output_unit</h3>
+    }
+
+    <!-- Display number base conversion result -->
+    @if (Model.ConversionType == "NumberBase" && !string.IsNullOrEmpty(Model.number_input_val) && Model.number_output_val != null)
+    {
+        <h3>Number Base Conversion Result: @Model.number_input_val (base @Model.number_input_base) = @Model.number_output_val (base @Model.number_output_base)</h3>
+    }
+
+    <!-- Display degrees to radians conversion result -->
+    @if (Model.ConversionType == "DegreesToRadians")
+    {
+        <h3>Degrees to Radians Result: @Model.degrees_input_val degrees = @Model.angle_output_val radians</h3>
+    }
+
+    <!-- Display radians to degrees conversion result -->
+    @if (Model.ConversionType == "RadiansToDegrees")
+    {
+        <h3>Radians to Degrees Result: @Model.radians_input_val radians = @Model.angle_output_val degrees</h3>
+    }
+}
